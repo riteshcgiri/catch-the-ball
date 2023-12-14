@@ -1,0 +1,251 @@
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    position: relative;
+}
+.option-screen{
+    z-index: 5;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(37, 56, 80);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    /* display: none; */
+}
+.option-screen h1{
+    margin-bottom: 3rem;
+    font-size: 4rem;
+}
+.option-screen .play{
+    font-size:3rem;
+    background: rgba(23, 38, 56, 0.7);
+    padding:1rem 4rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    letter-spacing: 5px;
+    transition: .2s;
+}
+.option-screen .play:hover{
+    transform: translateY(-10px) scale(.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    background: rgba(23, 38, 56, 1);
+}
+
+.option-screen .difficulty{
+    margin-top: 2rem;
+}
+.difficulty h3{
+    font-size: 2rem;
+    text-align: center;
+}
+.difficulty .options{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.options div:nth-child(5){
+    grid-column: span 2;
+}
+.options div input{
+    display: none;
+}
+.options div label{
+    width: 100%;
+    display: block;
+    /* border: 1px solid white; */
+    text-align: center;
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    transition: .2s;
+    background: rgba(23, 38, 56, 0.7);
+}
+
+.options div label:hover{
+    border-color: transparent;
+    transform: translateY(-5px) scale(.97);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+.options div input:checked ~ label{
+    background: rgb(19, 33, 49);
+    border-color: transparent;
+}
+
+/* game screen */
+.ground{
+    height: 100vh;
+    background: white;
+    position: relative;
+    overflow: hidden;
+}
+/* score */
+.score-board{
+    color: black;
+    position: absolute;
+    top: 21px;
+    right: 5%;
+    font-size: 1.2rem;
+}  
+
+/* players */
+.left-player, .right-player{
+    /* border:1px solid white; */
+    background: white;
+    height: 60px;
+    width: 15px;
+    position: absolute;
+    transition:.1s;
+    border-radius: .5rem;
+    top: 5%;
+}
+
+.left-player{
+   left: 10px; 
+}
+
+.right-player{
+    right: 10px; 
+}
+
+/* ball */
+.ball{
+    width: 25px;
+    height: 25px;
+    /* background: #18789b; */
+    /* background: linear-gradient(#20657f , #029288 ); */
+    border-radius: 50%;
+    position: absolute;
+    background: url('bubbles-pink.png');
+    background-size: cover;
+    background-position: center;
+    transition: .1s;
+    cursor: pointer;
+    animation: spin infinite alternate .3s;
+}
+@keyframes spin {
+    from{
+        /* rotate: 0deg; */
+        scale: 1;
+    }
+    to{
+        scale: 1.2;
+        /* rotate: 360deg; */
+    }
+}
+.ball:hover{
+    /* background: rgba(12, 119, 249, 0.5); */
+    background: url('bubbles-pink.png'), rgba(12, 119, 249, 0.5);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: screen;
+
+
+    
+}
+.ball-size{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+.ball-size label{
+    margin-bottom: .7rem;
+    text-align: center;
+}
+.ball-size input{
+    cursor: pointer;
+}
+.ball-size .range{
+    margin-top: .5rem;
+    width: 100%;
+    height: 5px;
+    background: #485a7b;
+    border-radius: .5rem;
+    cursor: pointer;
+    position: relative;
+}
+.range::before{
+    content: '';
+    width: var(--itsWidth);
+    height: 100%;
+    background: rgba(0, 0, 0, .2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    z-index: 0;
+}
+.range .range-radius{
+    width: 100%;
+    position: absolute;
+    top: -15px;
+    display: flex;
+    justify-content: space-between;
+    line-height: -5px;
+    font-size: .7rem;
+    visibility: hidden;
+    opacity: 0;
+    transition: .3s;
+}
+.range:hover > .range-radius{
+    visibility: visible;
+    opacity: 1;
+}
+.range .range-value{
+    width: 10%;
+    height: 100%;
+    background: rgba(23, 38, 56, 1);
+    border-radius: inherit;
+}
+
+
+.pause-btn{
+    /* working here */
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+.pause-btn::before, .pause-btn::after{
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 20px;
+    top: 50%;
+    border-radius: 3px;
+    transform: translate(-50%, -50%);
+    background: black;
+}
+.pause-btn::before{
+    left: 35%;
+}
+.pause-btn::after{
+    left: 65%;
+}
+
+.pause-btn:hover{
+    border-color: #485a7b;
+    scale: .9;
+}
+.pause-btn:hover::after,.pause-btn:hover::before{
+    background: #485a7b;
+}

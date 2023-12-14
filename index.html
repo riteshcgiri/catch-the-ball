@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bouncing game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="option-screen">
+        <h1>Touch Me</h1>
+        <div class="play">Play</div>
+        <div class="difficulty">
+            <h3>Difficulty?</h3>
+            <div class="options">
+                <div>
+                    <input type="radio" name="diff" id="super_easy" >
+                    <label class="diff" for="super_easy">Kid?</label>
+                </div>
+                <div>
+                    <input type="radio" name="diff" id="easy">
+                    <label class="diff" for="easy">Adult?</label>
+                </div>
+                <div>
+                    <input type="radio" name="diff" id="normal">
+                    <label class="diff" for="normal">Men?</label>
+                </div>    
+                <div>
+                    <input type="radio" name="diff" id="hard">
+                    <label class="diff" for="hard" >Legend?</label>
+                </div>
+                <div>
+                    <input type="radio" name="diff" id="extream">
+                    <label class="diff" for="extream" >Impossible!</label>
+                </div>
+            </div>
+            <div class="ball-size">
+                <label for="ballSize">Ball Size</label>
+                <!-- <input type="range" min="10" max="100" value="25" id="ballSize"> -->
+                <div class="range">
+                    <div class="range-radius">
+                        <span>10</span>
+                        <span id="crrValue">25</span>
+                        <span>100</span>
+                    </div>
+                    <div class="range-value"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ground">
+        <div class="pause-btn" title="pause"></div>
+        <div class="score-board">Score : 0</div>
+        <!-- <div class="left-player"></div>
+        <div class="right-player"></div> -->
+        <div class="ball"></div>
+    </div>
+</body>
+</html>
